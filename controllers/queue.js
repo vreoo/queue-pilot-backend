@@ -37,3 +37,11 @@ export const getQueue = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const getQueues = (req, res) => {
+    const q = "SELECT * FROM queues WHERE status = 'Open'";
+    db.query(q, (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json(data);
+    });
+};
